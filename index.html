@@ -12,6 +12,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,900|Roboto:300,400,500,700" rel="stylesheet">
 	<!-- Link Custom CSS -->
 	<link rel="stylesheet" type="text/css" href="Assets/style.css">
+	<!-- Link FireBase -->
+	<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
 </head>
 <body>
 	<!-- Visual Data Goes Here -->
@@ -29,28 +31,40 @@
 			<i class="fas fa-hand-scissors"></i>
 		</div>
 	</div>
-	<div class="container mt-5">
+	<div class="container mt-5 load-character">
+		<h1>Pick Your Player...</h1>
 		<div class="row">
 			<div class="col-6 text-center">
-				<div class="jumbotron">
+				<div class="jumbotron player-pick" id="player-pick-1">
 					<h2>Player One</h2>
-					<p>Status: <span id="player-one-connected">Not Connected</span></p>
-					<button id="player-one-rock"><i class="fas fa-hand-rock"></i></button>
-					<button id="player-one-paper"><i class="fas fa-hand-paper"></i></button>
-					<button id="player-one-scissors"><i class="fas fa-hand-scissors"></i></button>
+					
 				</div>
 			</div>
 			<div class="col-6 text-center">
-				<div class="jumbotron">
+				<div class="jumbotron player-pick" id="player-pick-2">
+					<h2>Player Two</h2>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Player one buttons -->
+	<!-- <p>Status: <span id="player-one-connected">Not Connected</span></p> 
+	<button id="player-one-rock"><i class="fas fa-hand-rock"></i></button>
+	<button id="player-one-paper"><i class="fas fa-hand-paper"></i></button>
+	<button id="player-one-scissors"><i class="fas fa-hand-scissors"></i></button>-->
+
+	<!-- Player two buttons -->
+	<!-- <div class="jumbotron">
 					<h2>Player Two</h2>
 					<p>Status: <span id="player-two-connected">Not Connected</span></p>
 					<button id="player-two-rock"><i class="fas fa-hand-rock"></i></button>
 					<button id="player-two-paper"><i class="fas fa-hand-paper"></i></button>
 					<button id="player-two-scissors"><i class="fas fa-hand-scissors"></i></button>
-				</div>
-			</div>
-		</div>
-	</div>
+				</div> -->
+
 
 	<!-- Link JQuery -->
 	<script
