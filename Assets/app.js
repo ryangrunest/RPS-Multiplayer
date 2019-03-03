@@ -59,33 +59,51 @@ $(document).on('click', '.player-choice', function() {
 });
 
 firebase.database().ref().on('value', function(snapshot) {
+	// update ui if players are being used
+	if (snapshot.child('player1').exists()) {
+		$('#player-pick-1').text('');
+		var alreadyPicked = $('<h2>').text('Player 1 is already connected');
+		$('#player-pick-1').append(alreadyPicked);
+		$('#player-pick-1').off('click');
+	}
+	if (snapshot.child('player2').exists()) {
+		$('#player-pick-2').text('');
+		var alreadyPicked = $('<h2>').text('Player 2 is already connected');
+		$('#player-pick-2').append(alreadyPicked);
+		$('#player-pick-2').off('click');
+	}
+
+
+
 	if (snapshot.child('player1').exists() && snapshot.child('player2').exists()) {
 		if (snapshot.child('player1').val().Choice === 'rock') {
 			if (snapshot.child('player2').val().Choice === 'scissors') {
-				console.log('player 1 is the winner');
+				alert('player 1 is the winner');
 			} else if (snapshot.child('player2').val().Choice === 'rock') {
-				console.log('its a tie');
+				alert('its a tie');
 			} else {
-				console.log('player 2 is the winner');
+				alert('player 2 is the winner');
 			}
 		} else if (snapshot.child('player1').val().Choice === 'paper') {
 			if (snapshot.child('player2').val().Choice === 'scissors') {
-				console.log('player 2 is the winner');
+				alert('player 2 is the winner');
 			} else if (snapshot.child('player2').val().Choice === 'rock') {
-				console.log('player 1 is the winner');
+				alert('player 1 is the winner');
 			} else {
-				console.log('tie');
+				alert('tie');
 			}
 
 		} else if (snapshot.child('player1').val().Choice === 'scissors') {
 			if (snapshot.child('player2').val().Choice === 'scissors') {
-				console.log('tie');
+				alert('tie');
 			} else if (snapshot.child('player2').val().Choice === 'rock') {
-				console.log('player 2 is the winner');
+				alert('player 2 is the winner');
 			} else {
-				console.log('player 1 is the winner');
+				alert('player 1 is the winner');
 			}
 		}
+		p1.remove();
+		p2.remove();
 	}
 	// console.log(snapshot);
 	// console.log(snapshot.child('player1').val().Choice);
