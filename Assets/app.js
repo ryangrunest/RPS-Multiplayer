@@ -157,10 +157,13 @@ firebase.database().ref().on('value', function(snapshot) {
 		// console.log(snapshot.child('winner').val().Winner);
 
 		// update ui on winner
-		$('.buttons-div').text('');
-		var winningText = $('<h2>').text(`${snapshot.child('winner').val().Winner} is the winner`);
-		var playAgainButton = $('<button>').text('Play Again?').attr('id', 'play-again-button');
-		$('.buttons-div').append(winningText, playAgainButton);
+		if (snapshot.child('winner').exists()) {
+			$('.buttons-div').text('');
+			var winningText = $('<h2>').text(`${snapshot.child('winner').val().Winner} is the winner`);
+			var playAgainButton = $('<button>').text('Play Again?').attr('id', 'play-again-button');
+			$('.buttons-div').append(winningText, playAgainButton);
+		}
+		
 		// remove winner data for next round
 		winner.remove();
 	}
